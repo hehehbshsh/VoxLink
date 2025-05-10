@@ -3,13 +3,13 @@
     "edge_functions/websocket.py": {
       "memory": 512,
       "maxDuration": 300
-    },
+    }
   },
   "routes": [
     {
       "src": "/websocket",
       "dest": "/edge_functions/websocket.py",
-      "regions": ["iad1"] <--- You can specify regions here at the route level (optional)
+      "regions": ["iad1"]
     }
   ]
 }
