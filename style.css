@@ -1,0 +1,305 @@
+:root {
+    /* Default Theme */
+    --bg-color: #f4f4f4;
+    --app-bg-color: #fff;
+    --text-color: #333;
+    --header-color: #333;
+    --header-border: 1px solid #eee;
+    --card-bg-color: #eee;
+    --card-border-radius: 4px;
+    --button-primary-bg: #5cb85c;
+    --button-primary-hover-bg: #4cae4c;
+    --button-danger-bg: #d9534f;
+    --button-danger-hover-bg: #c9302c;
+    --button-warning-bg: #f0ad4e;
+    --button-warning-hover-bg: #ec971f;
+    --button-secondary-bg: #6c757d;
+    --button-secondary-hover-bg: #5a6268;
+    --input-border: 1px solid #ccc;
+    --status-message-color: #d9534f;
+    --chat-self-bg: #dcf8c6;
+    --chat-other-bg: #f1f0f0;
+    --chat-border-radius: 8px;
+    --visualizer-bg: #eee; /* Base for visualizer */
+    --visualizer-color: rgb(150,50,50); /* Default bar color, overridden by JS */
+}
+
+/* Dark Theme */
+body.theme-dark {
+    --bg-color: #282c34;
+    --app-bg-color: #3a404c;
+    --text-color: #abb2bf;
+    --header-color: #61afef;
+    --header-border: 1px solid #525a66;
+    --card-bg-color: #4a5260;
+    --button-primary-bg: #98c379;
+    --button-primary-hover-bg: #8ac069;
+    --button-danger-bg: #e06c75;
+    --button-danger-hover-bg: #d15c67;
+    --button-warning-bg: #e5c07b;
+    --button-warning-hover-bg: #d9b06b;
+    --button-secondary-bg: #5a6268;
+    --button-secondary-hover-bg: #4a5055;
+    --input-border: 1px solid #525a66;
+    --status-message-color: #e06c75;
+    --chat-self-bg: #5a6268;
+    --chat-other-bg: #4a5260;
+    --visualizer-bg: #525a66;
+}
+
+/* Ocean Theme */
+body.theme-ocean {
+    --bg-color: #a1c4fd;
+    --app-bg-color: #c2e9fb;
+    --text-color: #0f4c75;
+    --header-color: #0f4c75;
+    --header-border: 1px solid #b3dee5;
+    --card-bg-color: #b3dee5;
+    --button-primary-bg: #3895d3;
+    --button-primary-hover-bg: #2a85c3;
+    --button-danger-bg: #ef5350;
+    --button-danger-hover-bg: #df4340;
+    --button-warning-bg: #ffb74d;
+    --button-warning-hover-bg: #ffa726;
+    --button-secondary-bg: #78909c;
+    --button-secondary-hover-bg: #6a7e8c;
+    --input-border: 1px solid #90caf9;
+    --status-message-color: #ef5350;
+    --chat-self-bg: #90caf9;
+    --chat-other-bg: #e1f5fe;
+    --visualizer-bg: #b3dee5;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color); /* Use CSS variable */
+    color: var(--text-color); /* Use CSS variable */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme transition */
+}
+
+#app {
+    background-color: var(--app-bg-color); /* Use CSS variable */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease; /* Smooth theme transition */
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: var(--header-border); /* Use CSS variable */
+    padding-bottom: 10px;
+    color: var(--header-color); /* Use CSS variable */
+}
+
+#header-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+#user-status {
+    font-size: 0.9em;
+    color: var(--text-color); /* Inherits or specific color */
+    flex-grow: 1;
+    text-align: left;
+    min-width: 150px; /* Ensure it doesn't collapse */
+}
+
+#theme-selector {
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#theme-selector button {
+    padding: 5px 10px;
+    font-size: 0.8em;
+    /* Inherit button styles or define smaller ones */
+    background-color: var(--button-secondary-bg); /* Example: use secondary button style */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#theme-selector button:hover {
+    background-color: var(--button-secondary-hover-bg);
+}
+
+h1, h2, h3 {
+    color: var(--header-color); /* Use CSS variable */
+}
+
+#main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.view {
+    display: none;
+    height: 100%;
+    flex-direction: column;
+    flex-grow: 1; /* Allow views to take available space */
+}
+
+.view.active {
+    display: flex;
+}
+
+#account-view, #rooms-view, #chat-view {
+    padding: 10px;
+    flex-grow: 1; /* Ensure these views fill the main content area */
+}
+
+#account-view {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+}
+
+#account-view input[type="text"],
+#account-view input[type="password"] {
+    padding: 10px;
+    border: var(--input-border); /* Use CSS variable */
+    border-radius: 4px;
+    flex-grow: 1;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#room-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+#room-list li {
+    background-color: var(--card-bg-color);
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: var(--card-border-radius);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#create-room-form {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#create-room-form input[type="text"],
+#create-room-form input[type="password"] {
+    padding: 10px;
+    border: var(--input-border);
+    border-radius: 4px;
+    flex-grow: 1;
+    min-width: 150px;
+}
+
+#rooms-view div:last-of-type {
+    display: flex;
+    align-items: center;
+}
+
+#participant-list {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: var(--header-border);
+}
+
+#participant-list h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+#audio-visualizer {
+    width: 100%;
+    height: 50px;
+    background-color: var(--visualizer-bg);
+    margin: 10px 0;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+#visualizer-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: var(--button-primary-bg);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--button-primary-hover-bg);
+}
+
+#mute-button.muted {
+    background-color: var(--button-danger-bg);
+}
+
+#mute-button.muted:hover {
+    background-color: var(--button-danger-hover-bg);
+}
+
+#leave-button {
+    background-color: var(--button-warning-bg);
+}
+
+#leave-button:hover {
+    background-color: var(--button-warning-hover-bg);
+}
+
+#logout-button {
+    background-color: var(--button-secondary-bg);
+}
+
+#logout-button:hover {
+    background-color: var(--button-secondary-hover-bg);
+}
+
+#status-messages {
+    margin-top: 10px;
+    color: var(--status-message-color);
+    text-align: center;
+    font-size: 0.9em;
+}
