@@ -1,14 +1,16 @@
 {
   "functions": {
-    "edge_functions/websocket.py": {
+    "api/websocket.py": {
       "memory": 512,
-      "maxDuration": 60
+      "maxDuration": 60,
+      "runtime": "python3.9" <--- Ensure you specify the Python runtime for Edge Functions
     }
   },
   "routes": [
     {
       "src": "/websocket",
-      "dest": "/edge_functions/websocket.py"
+      "dest": "/api/websocket.py"
     }
   ]
 }
+
