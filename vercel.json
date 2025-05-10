@@ -8,8 +8,7 @@
   "routes": [
     {
       "src": "/websocket",
-      "dest": "/edge_functions/websocket.py",
-      "regions": ["iad1"]
+      "dest": "/edge_functions/websocket.py"
     }
   ]
 }
