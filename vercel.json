@@ -3,7 +3,7 @@
     "edge_functions/websocket.py": {
       "memory": 512,
       "maxDuration": 300
-    }
+    },
   },
   "routes": [
     {
