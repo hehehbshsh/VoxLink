@@ -1,0 +1,91 @@
+<html>
+<head>
+    <title>Basic Voice Chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script type="importmap">
+        {
+            "imports": {
+            }
+        }
+    </script>
+    <script type="module" src="script.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>Voice Chat</h1>
+            <div id="header-controls">
+                <div id="user-status"></div>
+                 <div id="theme-selector">
+                    Theme:
+                    <button data-theme="default">Default</button>
+                    <button data-theme="dark">Dark</button>
+                    <button data-theme="ocean">Ocean</button>
+                </div>
+            </div>
+        </header>
+
+        <main id="main-content">
+            <!-- Content will be loaded here -->
+            <div id="account-view" class="view active">
+                <h2>Account Setup / Login</h2>
+                <p>Enter your username and password to login or create an account:</p>
+                <input type="text" id="username-input" placeholder="Username">
+                <input type="password" id="password-input" placeholder="Password">
+                <button id="set-username-button">Login or Create Account</button>
+            </div>
+
+            <div id="rooms-view" class="view">
+                <h2>Available Rooms</h2>
+                <ul id="room-list">
+                    <!-- Room items will be added here -->
+                    <!-- Static example rooms - JS will add listeners -->
+                    <li data-room-id="general">General Chat <button class="join-room-button" data-room-id="general">Join</button></li>
+                    <li data-room-id="gaming">Gaming Lounge <button class="join-room-button" data-room-id="gaming">Join</button></li>
+                </ul>
+                <h3>Create New Room</h3>
+                <div id="create-room-form">
+                    <input type="text" id="new-room-name-input" placeholder="New room name">
+                    <input type="password" id="new-room-password-input" placeholder="Password (optional)">
+                    <button id="create-room-button">Create & Join</button>
+                </div>
+            </div>
+
+            <div id="chat-view" class="view">
+                <h2 id="current-room-name">Not in a room</h2>
+                <div id="participant-list">
+                    <h3>Participants:</h3>
+                    <!-- Participants would be listed here in a real app -->
+                    <p>You (<span id="local-username"></span>)</p>
+                </div>
+                <div id="audio-visualizer">
+                    <!-- Visual representation of audio input -->
+                     <canvas id="visualizer-canvas"></canvas>
+                </div>
+
+                <!-- Text Chat Section -->
+                <div id="text-chat">
+                    <div id="chat-messages">
+                        <!-- Text messages will be added here -->
+                         <div class="message"><em>System: Welcome to the room!</em></div>
+                    </div>
+                    <div id="chat-input">
+                        <input type="text" id="message-input" placeholder="Type your message...">
+                        <button id="send-message-button">Send</button>
+                    </div>
+                </div>
+
+                <div id="controls">
+                    <button id="mute-button">Mute</button>
+                    <button id="leave-button">Leave Room</button>
+                     <button id="logout-button">Logout</button>
+                </div>
+                <div id="status-messages">
+                    <!-- Status like microphone access, connection issues etc. -->
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
